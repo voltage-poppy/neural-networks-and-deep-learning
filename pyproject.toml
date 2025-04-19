@@ -1,0 +1,13 @@
+[project]
+name = "neural-networks-and-deep-learning"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "matplotlib==3.*",
+    "numpy<1.22",
+    "scikit-learn<1.1",
+    "scipy==1.*",
+    "theano>=1.0.5",
+]
