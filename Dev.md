@@ -19,6 +19,15 @@ pyenv activate neu39
 pip install -r requirements.txt
 ```
 
+## Cuda
+
+The code in this project is not written to use GPU. So it is not actually using GPU. So Cuda is not required.
+
+But if you do want to install Cuda for torch, install Cuda 12.4. Not 12.6, not 12.8. (I can't get torch 2.6.0 to work with 12.6)
+
+12.4 is well supported by uv.
+
+
 ## Running
 
 ```bash
@@ -34,7 +43,9 @@ import network
 training_data, validation_data, test_data = mnist_loader.load_data_wrapper()
 
 net = network.Network([784, 30, 10])
-net.SGD(training_data, 30, 10, 3.0, test_data=test_data)
+num_epochs = 30
+learning_rate = 3.0
+net.SGD(training_data, num_epochs, 10, learning_rate, test_data=test_data)
 ```
 
 
@@ -48,5 +59,7 @@ training_data, validation_data, test_data = mnist_loader.load_data_wrapper()
 
 net = network2.Network([784, 30, 10], cost=network2.CrossEntropyCost)
 net.large_weight_initializer()
-net.SGD(training_data, 30, 10, 0.5, evaluation_data=test_data, monitor_evaluation_accuracy=True)
+num_epochs = 30
+learning_rate = 0.5
+net.SGD(training_data, num_epochs, 10, learning_rate, evaluation_data=test_data, monitor_evaluation_accuracy=True)
 ```
