@@ -4,6 +4,13 @@ To setup the environment, you need to be in specific Python versions.
 At least you won't pip install successfully in Python 3.11 .
 And README says it works with Python 3.8.x to 3.10.x, so let's use Python 3.9 .
 
+It's recommended to use uv
+```
+uv sync
+```
+
+Otherwise, you can setup environment manually
+
 ```bash
 pyenv install 3.9
 pyenv virtualenv 3.9 neu39
