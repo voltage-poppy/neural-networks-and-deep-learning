@@ -240,7 +240,7 @@ class Network(object):
             nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
         return (nabla_b, nabla_w)
 
-    def accuracy(self, data, convert=False):
+    def accuracy(self, data, convert=False) -> int:
         """Return the number of inputs in ``data`` for which the neural
         network outputs the correct result. The neural network's
         output is assumed to be the index of whichever neuron in the

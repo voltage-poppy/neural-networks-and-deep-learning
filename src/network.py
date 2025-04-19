@@ -38,7 +38,7 @@ class Network:
             a = sigmoid(np.dot(w, a) + b)
         return a
 
-    def SGD(self, training_data, epochs: int, mini_batch_size: int, eta: int, test_data=None):
+    def SGD(self, training_data, epochs: int, mini_batch_size: int, eta: float, test_data=None):
         """Train the neural network using mini-batch stochastic
         gradient descent. (S.G.D.)
         The ``training_data`` is a list of tuples
@@ -67,7 +67,7 @@ class Network:
             else:
                 print("Epoch {0} complete in {1:.2f} seconds".format(j, time_end-time_start))
 
-    def update_mini_batch(self, mini_batch, eta):
+    def update_mini_batch(self, mini_batch, eta: float):
         """Update the network's weights and biases by applying
         gradient descent using backpropagation to a single mini batch.
         The ``mini_batch`` is a list of tuples ``(x, y)``, and ``eta``
