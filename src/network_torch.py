@@ -17,7 +17,7 @@ def vectorized_result(j) -> list[float]:
     e[j] = 1.0
     return e
 
-class MinistDatasetLabelOnehot(Dataset):
+class MnistDatasetLabelOnehot(Dataset):
     def __init__(self, data: tuple[np.ndarray, np.ndarray]):
         assert len(data[0]) == len(data[1]), "Number of features and labels must match"
         self.features = torch.tensor(data[0], dtype=torch.float32)
@@ -31,7 +31,7 @@ class MinistDatasetLabelOnehot(Dataset):
         y = self.labels[idx]
         return x, y
 
-class MinistDataset(Dataset):
+class MnistDataset(Dataset):
     def __init__(self, data: tuple[np.ndarray, np.ndarray]):
         assert len(data[0]) == len(data[1]), "Number of features and labels must match"
         self.features = torch.tensor(data[0], dtype=torch.float32)
@@ -94,8 +94,8 @@ class MyNetwork(nn.Module):
 
 if __name__ == "__main__":
     tr_d, va_d, te_d = load_data()
-    training_ds = MinistDatasetLabelOnehot(tr_d)
-    test_ds = MinistDataset(te_d)
+    training_ds = MnistDatasetLabelOnehot(tr_d)
+    test_ds = MnistDataset(te_d)
 
     train_loader = DataLoader(training_ds, batch_size=10, shuffle=True)
 

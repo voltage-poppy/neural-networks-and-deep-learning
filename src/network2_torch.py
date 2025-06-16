@@ -12,7 +12,7 @@ def load_data() -> tuple[tuple[np.ndarray, np.ndarray], tuple[np.ndarray, np.nda
             training_data, validation_data, test_data = pickle.load(f, encoding='latin1')
     return training_data, validation_data, test_data
 
-class MinistDataset(Dataset):
+class MnistDataset(Dataset):
     def __init__(self, data: tuple[np.ndarray, np.ndarray]):
         assert len(data[0]) == len(data[1]), "Number of features and labels must match"
         self.features = torch.tensor(data[0], dtype=torch.float32)
@@ -27,12 +27,12 @@ class MinistDataset(Dataset):
         return x, y
 
 
-def load_data_wrapper() -> tuple[MinistDataset, MinistDataset, MinistDataset]:
+def load_data_wrapper() -> tuple[MnistDataset, MnistDataset, MnistDataset]:
     tr_d, va_d, te_d = load_data()
 
-    training_data = MinistDataset(tr_d)
-    validation_data = MinistDataset(va_d)
-    test_data = MinistDataset(te_d)
+    training_data = MnistDataset(tr_d)
+    validation_data = MnistDataset(va_d)
+    test_data = MnistDataset(te_d)
 
     return training_data, validation_data, test_data
 
@@ -85,8 +85,8 @@ class MyNetwork(nn.Module):
 
 if __name__ == "__main__":
     tr_d, va_d, te_d = load_data()
-    training_ds = MinistDataset(tr_d)
-    test_ds = MinistDataset(te_d)
+    training_ds = MnistDataset(tr_d)
+    test_ds = MnistDataset(te_d)
 
     train_loader = DataLoader(training_ds, batch_size=10, shuffle=True)
 
