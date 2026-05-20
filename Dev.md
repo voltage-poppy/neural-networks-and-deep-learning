@@ -1,3 +1,5 @@
+建议用Linux。如果用Windows请用WSL，至少我还没试过在Windows跑通Cuda。
+
 ## Installing dependencies
 
 To setup the environment, you need to be in specific Python versions.
